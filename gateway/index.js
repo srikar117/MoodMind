@@ -8,3 +8,10 @@ const upload = multer()
 
 app.use(cors())
 app.use(express.json())
+
+const SERVICES = {
+    sentiment : "http://localhost:8001/sentiment",
+    summarize : "http://localhost:8002/summarize",
+    image : "http://localhost:8003/tag-image"
+};
+
