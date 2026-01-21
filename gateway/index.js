@@ -15,7 +15,7 @@ const SERVICES = {
     image : "http://localhost:8003/tag-image"
 };
 
-app.post("api/sentiment", async (req,res) => {
+app.post("/api/sentiment", async (req,res) => {
     try{
         const response = await axios.post(
             SERVICES.sentiment,
