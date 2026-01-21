@@ -15,3 +15,14 @@ const SERVICES = {
     image : "http://localhost:8003/tag-image"
 };
 
+app.post("api/sentiment", async (req,res) => {
+    try{
+        const response = await axios.post(
+            SERVICES.sentiment,
+            req.body
+        )
+        res.json(response.data)
+    } catch (error) {
+        res.status(500).json({error : "Sentiment service failed"})
+    }
+})
