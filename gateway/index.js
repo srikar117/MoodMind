@@ -26,3 +26,15 @@ app.post("/api/sentiment", async (req,res) => {
         res.status(500).json({error : "Sentiment service failed"})
     }
 })
+
+app.post("/api/summary", async (req,res) => {
+    try{
+        const response = await axios.post(
+            SERVICES.summarize,
+            req.body
+        )
+        res.json(response.data)
+    } catch (error) {
+        res.status(500).json({error : "Summary service failed"})
+    }
+})
