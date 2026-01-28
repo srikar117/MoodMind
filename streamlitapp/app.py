@@ -55,3 +55,22 @@ if st.button("Summarize Text"):
         st.json(response.json())
 
 st.divider()
+
+st.subheader("Image Tagging")
+uploaded_image = st.file_uploader(
+    "Upload an Image",
+    type = ['jpg', 'jpeg', 'png']
+)
+if st.button("Tag Image"):
+    if uploaded_image is None:
+        st.warning("Please upload a valid image.")
+    else:
+        files = {
+            "image" : uploaded_image.getvalue()
+        }
+        response = requests.post(
+            f"{GATEWAY_URL}/api/image-tags",
+            files = files
+        )
+        st.image(uploaded_image, caption = "Uploaded Image", width = 400)
+        st.json(response.json)
