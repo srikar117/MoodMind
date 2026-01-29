@@ -72,5 +72,5 @@ if st.button("Tag Image"):
             f"{GATEWAY_URL}/api/image-tags",
             files = files
         )
-        st.image(uploaded_image, caption = "Uploaded Image", width = 400)
+        st.image(uploaded_image, caption = "Uploaded Image", width = 
         st.json(response.json)
