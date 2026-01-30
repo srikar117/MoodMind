@@ -49,7 +49,7 @@ app.post(
         try{
             const formData = new FormData()
             formData.append(
-                'file',
+                'image',
                 req.file.buffer,
                 req.file.originalname
             )
