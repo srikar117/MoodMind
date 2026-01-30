@@ -66,11 +66,15 @@ if st.button("Tag Image"):
         st.warning("Please upload a valid image.")
     else:
         files = {
-            "image" : uploaded_image.getvalue()
+            "image" : (
+                uploaded_image.name,
+                uploaded_image.getvalue(),
+                uploaded_image.type
+            )
         }
         response = requests.post(
             f"{GATEWAY_URL}/api/image-tags",
             files = files
         )
         st.image(uploaded_image, caption = "Uploaded Image", width = 400)
-        st.json(response.json)
+        st.write(response.json()["tags"])
