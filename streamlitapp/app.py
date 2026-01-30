@@ -72,10 +72,11 @@ if st.button("Tag Image"):
                 uploaded_image.type
             )
         }
-        response = requests.post(
-            f"{GATEWAY_URL}/api/image-tags",
-            files = files
-        )
+        with st.spinner("Processing image..."):
+            response = requests.post(
+                f"{GATEWAY_URL}/api/image-tags",
+                files = files
+            )
         if response.status_code == 200:
             st.image(uploaded_image, caption = "Uploaded Image", width = 400)
             st.write(response.json()["tags"])
