@@ -76,5 +76,8 @@ if st.button("Tag Image"):
             f"{GATEWAY_URL}/api/image-tags",
             files = files
         )
-        st.image(uploaded_image, caption = "Uploaded Image", width = 400)
-        st.write(response.json()["tags"])
+        if response.status_code == 200:
+            st.image(uploaded_image, caption = "Uploaded Image", width = 400)
+            st.write(response.json()["tags"])
+        else:
+            st.error(f"Error processing image: {response.status_code}")
